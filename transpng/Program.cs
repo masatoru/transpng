@@ -35,13 +35,14 @@ namespace transpng
             Console.Write("終了しました(Push Any Key)");
             Console.ReadKey();
         }
+
         static void Run(string srcdir, string outdir)
         {
             if (!System.IO.Directory.Exists(srcdir))
                 throw new Exception($"入力ディレクトリがありません DIR={srcdir}");
 
             var pnglst = System.IO.Directory.GetFiles(srcdir, "*.png");
-            if(pnglst.Length==0)
+            if (pnglst.Length == 0)
                 throw new Exception($"入力ディレクトリにPNGファイルがありません DIR={srcdir}");
 
             //ディレクトリが異なればコピーする
@@ -51,7 +52,7 @@ namespace transpng
             if (!System.IO.Directory.Exists(outdir))
                 System.IO.Directory.CreateDirectory(outdir);
 
-            foreach (var srcpath in pnglst.Select((v, i) => new { v, i }))
+            foreach (var srcpath in pnglst.Select((v, i) => new {v, i}))
             {
                 var outpath = System.IO.Path.Combine(outdir, System.IO.Path.GetFileName(srcpath.v));
                 Console.WriteLine($"==>{srcpath.i + 1}:{pnglst.Length}/{outpath}");
@@ -74,11 +75,10 @@ namespace transpng
             using (ImageMagick.MagickImage img = new ImageMagick.MagickImage(imgpath))
             {
                 img.Format = ImageMagick.MagickFormat.Png8;
-                img.Transparent(new ImageMagick.MagickColor(255, 255, 255));    //White
+                img.Transparent(new ImageMagick.MagickColor(255, 255, 255)); //White
                 img.ColorFuzz = new ImageMagick.Percentage(10.0);
                 img.Write(imgpath);
             }
         }
-
     }
 }
