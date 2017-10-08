@@ -205,3 +205,4 @@ ucm-gaiji.web/ucm-gaiji.web/InitData - コピー/otf_fontlist.txt
 ucm-gaiji.web/ucm-gaiji.web/InitData - コピー/png_imglist.txt
 ucm-gaiji.web/ucm-gaiji.web/InitData - コピー/ryumin_codelist.txt
 .vs/kadokawagaiji_proj.sqlite
+.idea/
